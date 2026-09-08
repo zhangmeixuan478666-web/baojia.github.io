@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宁波凯创物产 × 川威集团 | 业务7部报价</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    background: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  .poster {
+    width: 750px;
+    min-height: 1100px;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    border: 1px solid #e2e8f0;
+  }
+
+  /* ===== 顶部公司栏 ===== */
+  .header {
+    background: linear-gradient(135deg, #f8fdfb 0%, #ecfdf5 50%, #f8fdfb 100%);
+    padding: 28px 40px 22px;
+    position: relative;
+    border-bottom: 3px solid #059669;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #34d399, #059669, #34d399, transparent);
+  }
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .company-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-graphic {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-kc img {
+    height: 58px;
+    width: auto;
+    display: block;
+    filter: hue-rotate(140deg) saturate(0.8);
+  }
+  .logo-cw img {
+    height: 52px;
+    width: auto;
+    display: block;
+    filter: hue-rotate(140deg) saturate(0.8);
+  }
+  .company-name {
+    color: #065f46;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.2;
+  }
+  .company-en {
+    color: #6b7280;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-top: 3px;
+  }
+  .divider-v {
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(180deg, transparent, #059669, transparent);
+  }
+  .company-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .group-name {
+    color: #064e3b;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .group-sub {
+    color: #6b7280;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  /* ===== 功能操作栏 ===== */
+  .action-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 35px;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .action-bar .mode-indicator {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-right: auto;
+  }
+  .mode-off { background: #e5e7eb; color: #6b7280; }
+  .mode-on { background: #059669; color: #fff; }
+  .action-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .btn-edit {
+    background: #059669;
+    color: #fff;
+  }
+  .btn-edit:hover { background: #047857; }
+  .btn-edit.active {
+    background: #064e3b;
+  }
+  .btn-print {
+    background: #ffffff;
+    color: #059669;
+    border: 1px solid #059669 !important;
+  }
+  .btn-print:hover { background: #ecfdf5; }
+  .btn-reset {
+    background: #f3f4f6;
+    color: #6b7280;
+  }
+  .btn-reset:hover { background: #e5e7eb; }
+
+  /* ===== 绿色装饰线 ===== */
+  .green-line {
+    height: 4px;
+    background: linear-gradient(90deg,
+      #ffffff 0%, #34d399 15%, #059669 35%,
+      #10b981 55%, #34d399 75%, #059669 90%, #ffffff 100%);
+    position: relative;
+  }
+  .green-line::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16,185,129,0.5), transparent);
+  }
+
+  /* ===== 内容区 ===== */
+  .content-wrap {
+    padding: 30px 35px 25px;
+    background: #ffffff;
+    position: relative;
+  }
+  .content-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(16,185,129,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16,185,129,0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+  }
+
+  .card {
+    background: #ffffff;
+    border: 1.5px solid #10b981;
+    border-radius: 6px;
+    padding: 30px 32px 28px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(16,185,129,0.08);
+  }
+  .corner {
+    position: absolute;
+    width: 28px; height: 28px;
+    border-color: #064e3b;
+    border-style: solid;
+  }
+  .corner-tl { top: -2px; left: -2px; border-width: 4px 0 0 4px; border-radius: 6px 0 0 0; }
+  .corner-tr { top: -2px; right: -2px; border-width: 4px 4px 0 0; border-radius: 0 6px 0 0; }
+  .corner-bl { bottom: -2px; left: -2px; border-width: 0 0 4px 4px; border-radius: 0 0 0 6px; }
+  .corner-br { bottom: -2px; right: -2px; border-width: 0 4px 4px 0; border-radius: 0 0 6px 0; }
+
+  /* 日期标题 */
+  .date-title {
+    font-size: 40px;
+    font-weight: 900;
+    color: #064e3b;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+    text-shadow: 1px 1px 2px rgba(6,78,59,0.1);
+  }
+
+  /* 板块标签 */
+  .section-block {
+    position: relative;
+  }
+  .section-tag {
+    display: inline-block;
+    background: linear-gradient(90deg, #064e3b 0%, #059669 100%);
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 8px 28px 8px 20px;
+    border-radius: 0 20px 20px 0;
+    margin: 18px 0 14px;
+    letter-spacing: 2px;
+    position: relative;
+    box-shadow: 2px 2px 8px rgba(6,78,59,0.15);
+  }
+  .section-tag::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: #34d399;
+    border-radius: 0 3px 3px 0;
+  }
+  .section-block:first-of-type .section-tag { margin-top: 0; }
+
+  /* 正文 */
+  .body-text {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #1f2937;
+    padding: 4px 6px 10px;
+    font-weight: 500;
+  }
+  .body-text strong {
+    color: #047857;
+    font-weight: 700;
+  }
+  .item-list {
+    list-style: none;
+    padding: 4px 0 8px;
+  }
+  .item-list li {
+    font-size: 16px;
+    line-height: 1.85;
+    color: #1f2937;
+    padding: 5px 30px 5px 28px;
+    position: relative;
+    font-weight: 500;
+    border-bottom: 1px dashed rgba(16,185,129,0.2);
+  }
+  .item-list li:last-child { border-bottom: none; }
+  .item-list li::before {
+    content: attr(data-num);
+    position: absolute;
+    left: 0; top: 6px;
+    width: 22px; height: 22px;
+    background: #064e3b;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .item-list li strong {
+    color: #047857;
+    font-weight: 700;
+  }
+
+  /* 含权贸易 */
+  .quan-trade {
+    margin-top: 18px;
+    padding: 14px 18px;
+    background: linear-gradient(90deg, rgba(16,185,129,0.08), rgba(52,211,153,0.1));
+    border-left: 4px solid #064e3b;
+    border-radius: 0 6px 6px 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #064e3b;
+    line-height: 1.6;
+    position: relative;
+  }
+
+  /* ===== 底部 ===== */
+  .footer {
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    padding: 20px 40px;
+    text-align: center;
+    border-top: 3px solid #059669;
+    position: relative;
+  }
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: -3px; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #34d399, #059669, #34d399, transparent);
+  }
+  .footer-text {
+    color: #064e3b;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+  }
+
+  /* ===== 可编辑提示 ===== */
+  [contenteditable="true"] {
+    outline: none;
+    transition: background 0.2s;
+    border-radius: 3px;
+  }
+  [contenteditable="true"]:hover {
+    background: rgba(16,185,129,0.08);
+    cursor: text;
+  }
+  [contenteditable="true"]:focus {
+    background: rgba(16,185,129,0.15);
+    box-shadow: 0 0 0 2px rgba(16,185,129,0.3);
+  }
+
+  /* ===== 编辑模式下的删除/新增按钮 ===== */
+  .edit-mode .del-btn {
+    display: flex !important;
+  }
+  .edit-mode .add-btn {
+    display: inline-flex !important;
+  }
+  .edit-mode .add-section-btn {
+    display: flex !important;
+  }
+  .edit-mode [contenteditable="true"]:hover {
+    background: rgba(6,78,59,0.06);
+  }
+
+  .del-btn {
+    display: none;
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    background: #ef4444;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+    z-index: 10;
+    box-shadow: 0 2px 6px rgba(239,68,68,0.3);
+    transition: all 0.15s;
+  }
+  .del-btn:hover {
+    background: #dc2626;
+    transform: translateY(-50%) scale(1.15);
+  }
+  .section-block .del-btn {
+    top: 14px;
+    right: auto;
+    left: calc(100% + 8px);
+    transform: none;
+  }
+  .section-block .del-btn:hover {
+    transform: scale(1.15);
+  }
+  .quan-trade .del-btn {
+    top: 50%;
+    right: 8px;
+  }
+  .body-text .del-btn {
+    top: 8px;
+    right: 0;
+    transform: none;
+  }
+  .body-text .del-btn:hover {
+    transform: scale(1.15);
+  }
+
+  .add-btn {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    margin: 6px 0 6px 28px;
+    padding: 5px 14px;
+    background: rgba(16,185,129,0.08);
+    color: #064e3b;
+    border: 1px dashed #064e3b;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .add-btn:hover {
+    background: #064e3b;
+    color: #ffffff;
+  }
+
+  .add-section-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 16px auto 4px;
+    padding: 10px 24px;
+    background: rgba(16,185,129,0.1);
+    color: #047857;
+    border: 2px dashed #10b981;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+  }
+  .add-section-btn:hover {
+    background: #059669;
+    color: #fff;
+  }
+
+  /* 编辑模式高亮提示 */
+  .edit-mode .section-block,
+  .edit-mode .body-text,
+  .edit-mode .quan-trade {
+    outline: 1px dashed rgba(16,185,129,0.2);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .action-bar { display: none !important; }
+    .poster { box-shadow: none; border: none; }
+    .del-btn, .add-btn, .add-section-btn { display: none !important; }
+    .edit-mode .section-block,
+    .edit-mode .body-text,
+    .edit-mode .quan-trade {
+      outline: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="poster" id="poster">
+
+  <!-- ===== 顶部公司栏 ===== -->
+  <div class="header">
+    <div class="header-row">
+      <div class="company-left">
+        <div class="logo-graphic logo-kc"><img src="https://aka.doubaocdn.com/s/FJHG83q3PO" alt="凯创物产"></div>
+        <div>
+          <div class="company-name" contenteditable="true">宁波凯创物产有限公司</div>
+          <div class="company-en" contenteditable="true">NINGBO KAICHUAN RESOURCE CO.,LTD.</div>
+        </div>
+      </div>
+      <div class="divider-v"></div>
+      <div class="company-right">
+        <div class="logo-graphic logo-cw"><img src="https://aka.doubaocdn.com/s/7ONfnaTHs6" alt="川威集团"></div>
+        <div>
+          <div class="group-name" contenteditable="true">川威集团</div>
+          <div class="group-sub" contenteditable="true">凯创·川威 联营合作</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 功能操作栏 ===== -->
+  <div class="action-bar">
+    <span class="mode-indicator mode-off" id="modeIndicator">浏览模式</span>
+    <button class="action-btn btn-edit" id="btnEdit" onclick="toggleEditMode()">✏️ 开启编辑</button>
+    <button class="action-btn btn-print" onclick="window.print()">🖨️ 打印 / 导出PDF</button>
+    <button class="action-btn btn-reset" onclick="if(confirm('确定重置所有内容？')) location.reload()">↺ 重置</button>
+  </div>
+
+  <div class="green-line"></div>
+
+  <!-- ===== 内容区 ===== -->
+  <div class="content-wrap">
+    <div class="card" id="card">
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+
+      <!-- 日期标题 -->
+      <div class="date-title" id="dateTitle" contenteditable="true">8月27日业务7部报价</div>
+
+      <!-- 板块1：现价排产报价 -->
+      <div class="section-block">
+        <button class="del-btn" onclick="deleteSection(this)" title="删除此板块">×</button>
+        <div class="section-tag" contenteditable="true">现价排产报价</div>
+        <div class="body-text" contenteditable="true">
+          <strong>60-390</strong>（可排产各大厂）可直发道国，丰南，丰海，古冶，京唐选，服务，大邸庄
+          <button class="del-btn" onclick="deleteBodyText(this)" title="删除此段落">×</button>
+        </div>
+      </div>
+
+      <!-- 板块2：现货排产基差报价 -->
+      <div class="section-block">
+        <button class="del-btn" onclick="deleteSection(this)" title="删除此板块">×</button>
+        <div class="section-tag" contenteditable="true">现货排产基差报价</div>
+        <ul class="item-list">
+          <li data-num="1" contenteditable="true"><strong>610以上远期大厂</strong>（店银/阵西/国堂/佑工/天往/端丰），9月限量一单一议，差后点价（丰南库交货）。<button class="del-btn" onclick="deleteItem(this)" title="删除此条">×</button></li>
+          <li data-num="2" contenteditable="true"><strong>中贷大 750/805</strong> 可排规格排产（佑工/店银/格江/阵西/国堂/庆端丰）热卷1075，交货期25%。定金15%，可发古冶/丰利/丰南/京唐进厂车。<button class="del-btn" onclick="deleteItem(this)" title="删除此条">×</button></li>
+          <li data-num="3" contenteditable="true"><strong>中贷大/750/805</strong> 可排规格排产（佑工/店银/恰祥/网/国堂/庆端丰）一口成交价可商货期20-90天，定金15%，可发古冶/丰利/丰南原店进厂车。<button class="del-btn" onclick="deleteItem(this)" title="删除此条">×</button></li>
+          <li data-num="4" contenteditable="true">可按诡订物产成交价可商定。<button class="del-btn" onclick="deleteItem(this)" title="删除此条">×</button></li>
+          <li data-num="5" contenteditable="true">出<strong>395-88大厂</strong>，10天，20天，30天交货价格可商定。<button class="del-btn" onclick="deleteItem(this)" title="删除此条">×</button></li>
+          <li data-num="6" contenteditable="true"><strong>佑工现货20#排产</strong>，启库，热卷2510-75。<button class="del-btn" onclick="deleteItem(this)" title="删除此条">×</button></li>
+          <li data-num="7" contenteditable="true"><strong>天往350520</strong>，热卷2201-100，直发丰南/京唐选/营配句。<button class="del-btn" onclick="deleteItem(this)" title="删除此条">×</button></li>
+          <li data-num="8" contenteditable="true"><strong>店报现*盗住库</strong>，热卷2510-50。<button class="del-btn" onclick="deleteItem(this)" title="删除此条">×</button></li>
+        </ul>
+        <button class="add-btn" onclick="addItem(this)">＋ 新增报价条目</button>
+      </div>
+
+      <!-- 含权贸易报价 -->
+      <div class="section-block">
+        <button class="del-btn" onclick="deleteSection(this)" title="删除此板块">×</button>
+        <div class="quan-trade" contenteditable="true">
+          含权贸易报价：610/630大厂（川威集团｜业务7部联营报价）
+          <button class="del-btn" onclick="deleteQuanTrade(this)" title="删除此区块">×</button>
+        </div>
+      </div>
+
+      <!-- 新增板块按钮 -->
+      <button class="add-section-btn" onclick="addSection()">＋ 新增板块（列表型）</button>
+      <button class="add-section-btn" onclick="addTextSection()" style="margin-top:8px;">＋ 新增板块（段落型）</button>
+
+    </div>
+  </div>
+
+  <!-- ===== 底部 ===== -->
+  <div class="footer">
+    <div class="footer-text" contenteditable="true">宁波凯创物产 × 川威集团｜业务7部联营报价</div>
+  </div>
+
+</div>
+
+<script>
+  // ===== 自动更新日期 =====
+  function updateDate() {
+    const now = new Date();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+    const dateElement = document.getElementById('dateTitle');
+    dateElement.textContent = `${month}月${day}日业务7部报价`;
+  }
+  // 页面加载时自动更新日期
+  window.onload = function() {
+    updateDate();
+  };
+
+  // ===== 编辑模式切换 =====
+  let editMode = false;
+  function toggleEditMode() {
+    editMode = !editMode;
+    const poster = document.getElementById('poster');
+    const btn = document.getElementById('btnEdit');
+    const indicator = document.getElementById('modeIndicator');
+    if (editMode) {
+      poster.classList.add('edit-mode');
+      btn.textContent = '✅ 完成编辑';
+      btn.classList.add('active');
+      indicator.textContent = '编辑模式';
+      indicator.className = 'mode-indicator mode-on';
+    } else {
+      poster.classList.remove('edit-mode');
+      btn.textContent = '✏️ 开启编辑';
+      btn.classList.remove('active');
+      indicator.textContent = '浏览模式';
+      indicator.className = 'mode-indicator mode-off';
+    }
+  }
+
+  // ===== 删除报价条目 =====
+  function deleteItem(btn) {
+    const li = btn.closest('li');
+    const list = li.closest('.item-list');
+    if (list.children.length <= 1) {
+      if (!confirm('此板块只剩最后一条，删除后板块将为空。确定删除？')) return;
+    }
+    li.remove();
+    renumberList(list);
+  }
+
+  // ===== 重新编号 =====
+  function renumberList(list) {
+    const items = list.querySelectorAll('li');
+    items.forEach((li, i) => {
+      li.setAttribute('data-num', i + 1);
+    });
+  }
+
+  // ===== 新增报价条目 =====
+  function addItem(btn) {
+    const block = btn.closest('.section-block');
+    let list = block.querySelector('.item-list');
+    if (!list) {
+      list = document.createElement('ul');
+      list.className = 'item-list';
+      block.insertBefore(list, btn);
+    }
+    const li = document.createElement('li');
+    li.setAttribute('data-num', list.children.length + 1);
+    li.setAttribute('contenteditable', 'true');
+    li.innerHTML = '在此输入新报价内容…<button class="del-btn" onclick="deleteItem(this)" title="删除此条">×</button>';
+    list.appendChild(li);
+    li.focus();
+    const range = document.createRange();
+    range.selectNodeContents(li.firstChild);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+
+  // ===== 删除段落型正文 =====
+  function deleteBodyText(btn) {
+    const body = btn.closest('.body-text');
+    body.remove();
+  }
+
+  // ===== 删除含权贸易区块 =====
+  function deleteQuanTrade(btn) {
+    const qt = btn.closest('.quan-trade');
+    const block = qt.closest('.section-block');
+    qt.remove();
+    if (block && !block.querySelector('.section-tag') && block.children.length === 1) {
+      block.remove();
+    }
+  }
+
+  // ===== 删除整个板块 =====
+  function deleteSection(btn) {
+    const block = btn.closest('.section-block');
+    const tag = block.querySelector('.section-tag');
+    const name = tag ? tag.textContent : '此板块';
+    if (confirm('确定删除板块「' + name + '」及其所有内容？')) {
+      block.remove();
+    }
+  }
+
+  // ===== 新增列表型板块 =====
+  function addSection() {
+    const card = document.getElementById('card');
+    const addBtns = card.querySelectorAll('.add-section-btn');
+    const block = document.createElement('div');
+    block.className = 'section-block';
+    block.innerHTML =
+      '<button class="del-btn" onclick="deleteSection(this)" title="删除此板块">×</button>' +
+      '<div class="section-tag" contenteditable="true">新板块标题</div>' +
+      '<ul class="item-list">' +
+        '<li data-num="1" contenteditable="true">在此输入报价内容…<button class="del-btn" onclick="deleteItem(this)" title="删除此条">×</button></li>' +
+      '</ul>' +
+      '<button class="add-btn" onclick="addItem(this)">＋ 新增报价条目</button>';
+    card.insertBefore(block, addBtns[0]);
+    const tag = block.querySelector('.section-tag');
+    tag.focus();
+    const range = document.createRange();
+    range.selectNodeContents(tag);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+
+  // ===== 新增段落型板块 =====
+  function addTextSection() {
+    const card = document.getElementById('card');
+    const addBtns = card.querySelectorAll('.add-section-btn');
+    const block = document.createElement('div');
+    block.className = 'section-block';
+    block.innerHTML =
+      '<button class="del-btn" onclick="deleteSection(this)" title="删除此板块">×</button>' +
+      '<div class="section-tag" contenteditable="true">新板块标题</div>' +
+      '<div class="body-text" contenteditable="true">在此输入段落内容…' +
+        '<button class="del-btn" onclick="deleteBodyText(this)" title="删除此段落">×</button>' +
+      '</div>';
+    card.insertBefore(block, addBtns[0]);
+    const tag = block.querySelector('.section-tag');
+    tag.focus();
+    const range = document.createRange();
+    range.selectNodeContents(tag);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+
+  // ===== 防止编辑时意外换行 =====
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey && e.target.isContentEditable) {
+      e.preventDefault();
+      e.target.blur();
+    }
+  });
+</script>
+
+</body>
+</html>
